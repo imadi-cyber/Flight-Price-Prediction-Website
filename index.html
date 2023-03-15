@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>FLYMAGIC</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>PREDICT FLIGHT FARE</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <label> Select Airline Comapny</label>  
+        <select name="airline" id="airline">  
+        <option value=5> Vistara  
+        </option>  
+        <option value=1> Air India  
+        </option>  
+        <option value=3> Indigo  
+        </option>  
+        <option value=2> Go First 
+        </option> 
+        <option value=0> Air Asia 
+        </option> 
+        <option value=4> Spice Jet 
+        </option>  
+        </select>  
+        <br>
+        <label> Select Source</label>  
+        <select name="source_city" id="source_city">  
+        <option value=2> New Delhi 
+        </option>  
+        <option value=5> Mumbai 
+        </option>  
+        <option value=0> Bengaluru 
+        </option>  
+        <option value=4> Kolkata
+        </option> 
+        <option value=3> Hyderabad
+        </option> 
+        <option value=1> Chennai 
+        </option>  
+        </select>
+        <br>
+        <label> Select Departure Time Slot</label>  
+        <select name="departure_time" id="departure_time">  
+        <option value=4> Morning 
+        </option>  
+        <option value=1> Early Morning 
+        </option>  
+        <option value=2> Evening 
+        </option>  
+        <option value=5> Night
+        </option> 
+        <option value=0> Afternoon 
+        </option> 
+        <option value=3> Late Night
+        </option>  
+        </select>
+        <br>
+        <label> Select desired number of stops</label>  
+        <select name="stops" id="stops">  
+        <option value=0> One
+        </option>  
+        <option value=2> NonStop
+        </option>  
+        <option value=1> Two or more
+        </option>  
+        </select> 
+        <br>
+        <label> Select Arrival Time Slot</label>  
+        <select name="arrival_time" id="arrival_time">  
+        <option value=5> Night
+        </option>  
+        <option value=2> Evening 
+        </option>  
+        <option value=4> Morning
+        </option>  
+        <option value=0> Afternoon
+        </option> 
+        <option value=1> Early Morning
+        </option> 
+        <option value=3> Late Night
+        </option>  
+        </select>
+        <br>
+        <label> Select Destination</label>  
+        <select name="destination_city" id="destination_city">  
+        <option value=5> Mumbai
+        </option>  
+        <option value=2> New Delhi 
+        </option>  
+        <option value=0> Bengaluru 
+        </option>  
+        <option value=4> Kolkata
+        </option> 
+        <option value=3> Hyderabad 
+        </option> 
+        <option value=1> Chennai
+        </option>  
+        </select>
+        <br> 
+        <label> Select Class</label>  
+        <select name="class" id="class">  
+        <option value=1>  Economy 
+        </option>  
+        <option value=0> Business 
+        </option>  
+        </select>          
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict My Fare</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
